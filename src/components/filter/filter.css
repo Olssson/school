@@ -1,0 +1,13 @@
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-size: 10px;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    color: #333;
+    font-size: 16px;
+    padding: 10px 15px;
+    width: 160px;
+}

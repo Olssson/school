@@ -1,0 +1,74 @@
+{
+    "products":[
+       {
+          "id":1,
+          "name":"white widows",
+          "description":"White widows Canabis",
+          "price":600,
+          "promoPrice":50,
+          "category":"canabis",
+          "avaible":true,
+          "image":"Screenshot_1-removebg-preview.png"
+       },
+       {
+          "id":2,
+          "name":"Shogun",
+          "description":"Shogun cannabis",
+          "price":70,
+          "promoPrice":69,
+          "category":"canabis",
+          "avaible":true,
+          "image":"shogun-removebg-preview.png"
+       },
+       {
+          "id":3,
+          "name":"Cookie gelato",
+          "description":"Cookie gelato Canabis",
+          "price":39,
+          "promoPrice":34,
+          "category":"canabis",
+          "avaible":true,
+          "image": "cookies-gelato-removebg-preview.png"
+       },
+       {
+          "id":4,
+          "name":"AK-47 type II",
+          "description":"karabin AK-47 type II ",
+          "price":4900,
+          "promoPrice":4500,
+          "category":"rifle",
+          "avaible":true,
+          "image":"_20993-removebg-preview.png"
+       },
+       {
+         "id":5,
+         "name":"purple-canabis",
+         "description":"purple-canabis",
+         "price":500,
+         "promoPrice":50,
+         "category":"canabis",
+         "avaible":true,
+         "image":"purple-canabis.png"
+      },
+      {
+         "id":6,
+         "name":"SweatZZ",
+         "description":"SweatZZ Canabis",
+         "price":100,
+         "promoPrice":60,
+         "category":"canabis",
+         "avaible":true,
+         "image":"SweatZZ.png"
+      },
+      {
+         "id":7,
+         "name":"royal-skywalker",
+         "description":"royal-skywalker Canabis",
+         "price":250,
+         "promoPrice":900,
+         "category":"canabis",
+         "avaible":true,
+         "image":"royal-skywalker.png"
+      }
+    ]
+ }

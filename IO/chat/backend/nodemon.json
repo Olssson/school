@@ -1,0 +1,4 @@
+{
+    "watch": ["src/**/*.js", "index.js"],
+    "exec": "npm start"
+}

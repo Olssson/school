@@ -1,0 +1,28 @@
+@import './../../assets/colors';
+
+.panel-container {
+    padding: 20px;
+    font-size: 12px;
+    
+    ul li {
+        display: flex;
+        align-items: center;
+
+        p {
+            margin-right: 10px;
+            width: 100px;
+        }
+        input {
+            width: 100px;
+            height: 20px;
+            border-radius: 2px;
+            border: 1px solid $grey;
+        }
+        input[type='checkbox'] {
+            width: 17px;
+            height: 17px;
+            margin: 0;
+            margin-left: 0px;
+        }
+    }
+}

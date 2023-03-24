@@ -1,0 +1,21 @@
+@import './../../assets/colors';
+
+.slider-container {
+    padding: 20px;
+    color: $white;
+    text-align: center;
+    background-color: yellow;
+}
+
+
+.slider-profile {
+    border: 2px solid $white;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    text-align: center;
+}
+// .img {
+    // background-image: url('../../../public/./profile.png');
+// }/

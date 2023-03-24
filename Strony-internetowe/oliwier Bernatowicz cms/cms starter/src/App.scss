@@ -1,0 +1,19 @@
+@import './assets/colors';
+
+.container {
+    padding: 10px 20px;
+}
+
+.btn {
+    padding: 6px 10px;
+    border: none;
+    text-decoration: none;
+    color: $white;
+    background: $btn;
+    font-size: 14px;
+    border-radius: 4px;
+
+    &:hover {
+        background: $btnHover;
+    }
+}

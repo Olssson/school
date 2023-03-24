@@ -1,0 +1,27 @@
+@import './../../assets/colors';
+.articles-container {
+    background-image: url('https://scontent.fpoz4-1.fna.fbcdn.net/v/t1.18169-9/17757115_1007867592646533_6132270507894352165_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=9267fe&_nc_ohc=FM2_KCFMwVsAX-m8O60&_nc_ht=scontent.fpoz4-1.fna&oh=00_AT9K5IUt26WemywRJdnuQJ6tyyntHT4931JTqQu-w3Gs2A&oe=636A6C96');
+}
+.col1 {
+    width:300px;
+    height: 300px;
+    background-color: $btnFooter;
+    margin: 10px;
+    float: left;
+}
+.col2 {
+    width:300px;
+    height: 300px;
+    background-color: $btnFooter;
+    margin: 10px;
+    float: left;
+
+}
+.col3 {
+    width:300px;
+    height: 300px;
+    background-color: $btnFooter;
+    margin: 10px;
+    float: left;
+    
+}

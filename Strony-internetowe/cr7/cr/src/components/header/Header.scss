@@ -1,0 +1,24 @@
+@import './../../assets/colors';
+
+.header-container {
+    .header {
+        background: $blackLight;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h1 {
+            color: $white;
+            font-size: 16px;
+        }
+    }
+    .btn {
+        &--admin {
+            background: $btnAdmin;
+
+            &:hover {
+                background: $btnAdminHover;
+            }
+        }
+    }
+}

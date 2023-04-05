@@ -1,42 +1,72 @@
 from flask import Flask, Response, request, jsonify
 
-from eat_it.controllers import AddUserController, AddUserRequest
+from eat_it.controllers import AddUserController, UserRequest, \
+                               DeleteUserController, UpdateUserController, \
+                               PutUserController, GetUserController
 from eat_it.repositories import UserRepository
 
 app = Flask(__name__)
 
 
-class User:
-    def __init__(self, id, name, age):
-        self.id = id
-        self.name = name
-        self.age = age
-
-class UserDTO:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
+@app.get("/ping")
+def ping():
+    return Response(status=501)
 
 
-@app.route('/users', methods=['GET'])
-def get_users():
-    raise NotImplementedError()
+@app.post('/users')
+def create_user() -> Response:
+    user = request.json
+    repository = UserRepository()
+    controller = AddUserController(repository=repository)
+    add_user_request = UserRequest(user=user)
+    controller.add(request=add_user_request)
+    return jsonify(user)
 
-@app.route('/users', methods=['POST'])
-def create_user():
-    data = request.get_json()
-    user_dto = UserDTO(**data)
-    user = User(id=1, **data)
-    return jsonify({'id': user.id, 'name': user.name, 'age': user.age}), 201
 
-@app.route('/users/<int:user_id>', methods=['PUT'])
-def update_user(user_id):
-    raise NotImplementedError()
+@app.delete('/users/<user_id>')
+def delete_user() -> Response:
+    user = request.json
+    repository = UserRepository()
+    controller = DeleteUserController(repository=repository)
+    delete_user_request = UserRequest(user=user)
+    controller.delete(request=delete_user_request)
+    return jsonify(user)
 
-@app.route('/users/<int:user_id>', methods=['PATCH'])
-def partial_update_user(user_id):
-    raise NotImplementedError()
 
-@app.route('/users/<int:user_id>', methods=['DELETE'])
-def delete_user(user_id):
-    raise NotImplementedError()
+@app.patch('/users/<user_id>')
+def update_user() -> Response:
+    user = request.json
+    repository = UserRepository()
+    controller = UpdateUserController(repository=repository)
+    update_user_request = UserRequest(user=user)
+    controller.update(request=update_user_request)
+    return jsonify(user)
+
+
+@app.put('/users/<user_id>')
+def put_user() -> Response:
+    user = request.json
+    repository = UserRepository()
+    controller = PutUserController(repository=repository)
+    put_user_request = UserRequest(user=user)
+    controller.replace(request=put_user_request)
+    return jsonify(user)
+
+
+@app.get('/users/<user_id>')
+def get_user() -> Response:
+    user = request.json
+    repository = UserRepository()
+    controller = GetUserController(repository=repository)
+    get_user_request = UserRequest(user=user)
+    user = controller.get(request=get_user_request)
+    return jsonify(user)
+
+@app.get('/users/<id>')
+def get_users(id):
+    user = request.json
+    repository = UserRepository()
+    controller = GetUserController(repository=repository)
+    get_user_request = UserRequest(user=user)
+    user = controller.get(request=get_user_request)
+    return 501

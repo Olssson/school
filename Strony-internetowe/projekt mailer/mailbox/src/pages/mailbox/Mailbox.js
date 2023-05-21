@@ -1,6 +1,7 @@
 import './Mailbox.scss';
 import axios from 'axios';
 import React, {createRef, useEffect, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -10,6 +11,8 @@ const Mailbox = () => {
     const senderRef = createRef();
     const receiverRef = createRef();
     const [users, setUsers] = useState([]);
+
+    const navigate = useNavigate();
 
     const getUsers = async () => {
         const response = await axios.get(
@@ -23,9 +26,27 @@ const Mailbox = () => {
         setUsers(response.data.users);
     };
 
+    const [messages, setMessages] = useState([]);
+
+    const getMessages = async () => {
+        const response = await axios.get(
+            '/api/posts',
+        {
+            headers: {
+                Authentication: localStorage.getItem('token')
+            }
+        }
+        );
+        setMessages(response.data.messages);
+    };
+
     useEffect(() => {
+        if (!localStorage.getItem('token')) navigate('/');
         getUsers();
+        getMessages();
     }, []);
+
+    
 
     const sendEmailHandler = (e) => {
         e.preventDefault();
@@ -70,11 +91,17 @@ const Mailbox = () => {
                     </select>
                 </div>
                 <button className="o"onClick={sendEmailHandler}>Wyślij</button>
-                <div id = 'email'>
-                    
-                </div>
+
             </form>
-            
+            <div id="email">
+            {messages.map(message => <div className="Mailbox-message" key={message._id}>
+                <h2>{message.title}</h2>
+                <p>{message.content}</p>
+                <p>{message.sender}</p>
+                <p>{message.receiver}</p>
+                <p>{message.read}</p>
+            </div>)}
+            </div>
         </div>
     )
 }

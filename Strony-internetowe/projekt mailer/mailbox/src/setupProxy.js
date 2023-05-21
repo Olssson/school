@@ -9,7 +9,6 @@ module.exports = function(app) {
       "/api/admin",
       '/api/mailbox',
       '/api/adminlogin',
-      
     ],
     createProxyMiddleware({
       target: 'http://localhost:8080',

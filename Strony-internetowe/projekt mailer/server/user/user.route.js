@@ -5,4 +5,6 @@ const usersService = require('./service/user');
 router.get('/api/users', usersService.getUsers);
 router.post('/api/users', usersService.addUser);
 router.delete('/api/users/:id', usersService.deleteUser);
+router.post('/api/adminlogin', usersService.adminLogin);
+
 module.exports = router;

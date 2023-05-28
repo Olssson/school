@@ -2,6 +2,7 @@ import './Mailbox.scss';
 import axios from 'axios';
 import React, {createRef, useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'
 
 
 
@@ -10,6 +11,7 @@ const Mailbox = () => {
     const contentRef = createRef();
     const senderRef = createRef();
     const receiverRef = createRef();
+
     const [users, setUsers] = useState([]);
 
     const navigate = useNavigate();
@@ -30,7 +32,7 @@ const Mailbox = () => {
 
     const getMessages = async () => {
         const response = await axios.get(
-            '/api/posts',
+            '/api/post/tome',
         {
             headers: {
                 Authentication: localStorage.getItem('token')
@@ -57,12 +59,9 @@ const Mailbox = () => {
 
         
 
-        sendEmail({ title, content, receiver});
-
         const data = {title, content, receiver }
-        
+        sendEmail(data);
 
-        console.log(data);
     };
     const sendEmail = async (data) => {
         await axios.post('/api/mailbox', data,{
@@ -72,13 +71,15 @@ const Mailbox = () => {
             }
         }
         );
-        document.getElementById("email").innerHTML = 'Wysłano wiadomość'
+        await Swal.fire({
+            icon: 'success',
+            title: 'Wysłano',
+            text: 'Wysłano wiadomość',
+            timer: 3000
+        });
         getUsers();
     };
     
-
-    
-
     return (
         <div className='Mailbox-container'>
             <h1>Mailer admin</h1>
@@ -93,14 +94,17 @@ const Mailbox = () => {
                 <button className="o"onClick={sendEmailHandler}>Wyślij</button>
 
             </form>
-            <div id="email">
-            {messages.map(message => <div className="Mailbox-message" key={message._id}>
-                <h2>{message.title}</h2>
-                <p>{message.content}</p>
-                <p>{message.sender}</p>
+            <br></br>
+            <div>
+            {messages.map(message => <div className="Mailboxmessage" key={message._id}>
+                <div className='Mailbox-message'>
+                <h2 >Temat: {message.title}</h2>
+                <p>Treść: {message.content}</p>
+                <p>Od: {message.sender}</p>
                 <p>{message.receiver}</p>
-                <p>{message.read}</p>
-            </div>)}
+            </div>
+            <br></br></div>)}
+            <br></br>
             </div>
         </div>
     )

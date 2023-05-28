@@ -2,19 +2,31 @@ const messages = require("../../models/message");
 const User = require("../../models/user")
 const jwt = require("jsonwebtoken")
 
-const get = async (req, res) => {
+const sendToMePost_get = async (req, res) => {
+    const token = req.headers["authentication"];
+    const check = jwt.verify(token, "secret");
+    console.log(check)
+
+    const fajnie = await messages.find({receiver: check.email})
+    const response = {
+        success: true,
+        messages: fajnie,
+    };
+    return res.status(200).json(response);
+};
+
+const postsSendedByMe_get = async (req, res) => {
     const token = req.headers["authentication"];
     const check = jwt.verify(token, "secret");
 
-    console.log(check)
+    const fajnie = await messages.find({sender: check.email})
+    const response = {
+        success: true,
+        messages: fajnie,
+    };
 
-    // const fajnie = messages.find({receiver: check})
-    // const response = {
-    //     success: true,
-    //     messages: fajnie,
-    // };
-    // return res.status(200).json(response);
-};
+    return res.status(200).json(response);
+}
 
 const send = async (req, res) => {
     const token = req.headers["authentication"];
@@ -48,7 +60,8 @@ const users = async (req, res) => {
 };
 
 module.exports = {
-    get,
+    sendToMePost_get,
+    postsSendedByMe_get,
     send,
     users,
 };

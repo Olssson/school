@@ -1,8 +1,7 @@
 @import './../../colors';
 
 .Dashboard-container {
-    background: rgb(255,255,255);
-    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,255,104,1) 75%); 
+    background: $white;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,13 +9,12 @@
     height: auto;
 
     h1 {
-        color: $whiteWashy;
+        color: $text;
         font-size: 20px;
     }
         form {
         display: flex;
         input {
-            border: none;
             padding: 8px 20px;
             background: $white;
             margin-bottom: 20px;
@@ -49,7 +47,7 @@
         }
 
         input {
-            border: none;
+
             padding: 8px 20px;
             background: $white;
             margin-bottom: 20px;
@@ -61,7 +59,7 @@
 
         button {
             border: none;
-            background: $header;
+            background: #426ee4;
             color: $white;
             padding: 8px 20px;
             border-radius: 6px;

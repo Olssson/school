@@ -5,10 +5,12 @@ module.exports = function(app) {
     [
       '/api/login',
       "/api/users",
-      "/api/posts",
+      "/api/post/tome",
+      "/api/post/sendedbyme",
       "/api/admin",
       '/api/mailbox',
       '/api/adminlogin',
+      '/api/users',
     ],
     createProxyMiddleware({
       target: 'http://localhost:8080',

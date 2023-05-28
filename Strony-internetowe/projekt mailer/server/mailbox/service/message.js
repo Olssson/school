@@ -22,8 +22,6 @@ const addEmailHandler = async (req,res) => {
 
 const getUsers = async (req, res) => {
     const token = req.headers["authentication"];
-    console.log(token)  
-    console.log(req.headers)
     const check = jwt.verify(token, "secret");
 
     if (!check) {
@@ -32,7 +30,6 @@ const getUsers = async (req, res) => {
 
     try {
         const users = await User.find({admin: {$in: [null, false]}});
-        console.log(users)
         return res.status(200).json({ success: true, users });
 
     } catch (err) {

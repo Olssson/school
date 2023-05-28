@@ -20,10 +20,9 @@ const getUsers = async (req, res) => {
     }
 
     try {
-        const users = await User.find({admin: {$in: [null, false]}});
+        const users = await User.find({admin: {$in: [null, false], email: {$ne: check.email}}});
         console.log(users)
         return res.status(200).json({ success: true, users });
-
     } catch (err) {
         return res.status(400).json({ success: false });
     }

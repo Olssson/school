@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, {createRef, useEffect, useState} from 'react';
 import './Dashboard.scss';
+import Swal from 'sweetalert2'
+
 
 const Dashboard = () => {
     const nameRef = createRef();

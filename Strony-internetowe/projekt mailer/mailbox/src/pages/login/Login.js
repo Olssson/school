@@ -26,7 +26,7 @@ const Login = () => {
 
     return (
         <div className='Login-container'>
-            <h1>Mailer admin</h1>
+            <h1>Mailer</h1>
             <form>
                 <input ref={emailRef} type='text' placeholder='Email' />
                 <input ref={passwordRef} type='password' placeholder='Password' />

@@ -11,7 +11,7 @@ const addUser = async (req,res) => {
     }
 };
 const getUsers = async (req, res) => {
-    const token = req.headers["authorization"];
+    const token = req.headers["authorization"]  ;
     console.log(token)
     const check = jwt.verify(token, "secret");
 
@@ -20,7 +20,7 @@ const getUsers = async (req, res) => {
     }
 
     try {
-        const users = await User.find({admin: {$in: [null, false], email: {$ne: check.email}}});
+        const users = await User.find({admin: {$in: [null, false]}});
         console.log(users)
         return res.status(200).json({ success: true, users });
     } catch (err) {
@@ -45,6 +45,8 @@ const deleteUser = async (req, res) => {
     }
 
 };
+
+
 
 
 module.exports = {addUser, getUsers, deleteUser,}

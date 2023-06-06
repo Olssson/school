@@ -18,6 +18,13 @@ form {
             resize: none;
             width: auto;
             height: 100px;
+            border-color: $brightblue;
+            padding: 8px 20px;
+            background: $white;
+            margin-bottom: 20px;
+            font-weight: bold;
+            border-radius: 6px;
+
         }
     }
     input {
@@ -45,6 +52,7 @@ form {
         }
     }
 }
+
 .Mailbox-message{
     border-radius: 10px;
     background-color: $lightwhite;
